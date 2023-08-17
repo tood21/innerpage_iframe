@@ -1,8 +1,8 @@
 import './App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function App() {
-
+  const [jsessionId, setJsessionId] = useState(null);
   const clickHandler = () => {
     window.top.location.href = 'https://www.naver.com';
   }
@@ -12,8 +12,8 @@ function App() {
       if (event.origin !== 'https://tood21.vercel.app/') return;
 
       const jsessionId = event.data;
-      console.log('jsessionId', jsessionId);
       // 받은 jsessionId로 원하는 작업 수행
+      setJsessionId(jsessionId);
     };
 
     window.addEventListener('message', handleMessage);
@@ -27,6 +27,11 @@ function App() {
   return (
     <div className="App">
       <h1>이너페이지</h1>
+      {jsessionId ? (
+        <p>받은 JSessionID: {jsessionId}</p>
+      ) : (
+        <p>JSessionID를 기다리는 중...</p>
+      )}
       <button onClick={clickHandler}>상위페이지 리다이렉션</button>
     </div>
   );
