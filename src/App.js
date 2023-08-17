@@ -6,14 +6,15 @@ function App() {
   const clickHandler = () => {
     window.top.location.href = 'https://www.naver.com';
   }
+
   useEffect(() => {
     const handleMessage = (event) => {
       // 이벤트 발생 건의 출처 도메인 확인
       if (event.origin !== 'https://tood21.vercel.app/') return;
 
-      const jsessionId = event.data;
+      const sessionId = event.data;
       // 받은 jsessionId로 원하는 작업 수행
-      setJsessionId(jsessionId);
+      setJsessionId(sessionId);
     };
 
     window.addEventListener('message', handleMessage);
