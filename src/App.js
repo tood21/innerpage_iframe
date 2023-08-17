@@ -29,7 +29,7 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className="App" style={{border: "2px dotted black"}}>
       <h1>이너페이지</h1>
       {jsessionId ? (
         <p>받은 JSessionID: {jsessionId}</p>
