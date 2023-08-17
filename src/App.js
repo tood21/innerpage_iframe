@@ -9,6 +9,7 @@ function App() {
 
   useEffect(() => {
     const handleMessage = (event) => {
+      console.log('handleMessage 실행');
       // 이벤트 발생 건의 출처 도메인 확인
       if (event.origin !== 'https://tood21.vercel.app/') return;
 
